@@ -1,0 +1,67 @@
+.regPage {
+    display: flex;
+    background: #fff;
+    height: 100vh;
+}
+
+.regPage h1 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 116.6%;
+    color: #000000;
+}
+
+.regForm {
+    padding-left: 3em;
+}
+
+.regPage img {
+    height: 100%;
+}
+
+.nameForInput {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23px;
+    line-height: 116.6%;
+    color: #000000;
+    padding: .5em 0;
+}
+
+.field {
+    margin: 1.5em 0;
+}
+
+.field input {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23px;
+    line-height: 116.6%;
+    padding: .5em 1em;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.fieldBtn button {
+    margin: 1em 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 116.6%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #90BCBA;
+    border: 2px solid #90BCBA;
+    box-sizing: border-box;
+    border-radius: 16px;
+    padding: .5em 2em;
+    cursor: pointer;
+
+}
+
+.fieldBtn button:hover {
+    background: #fff;
+    border: 2px solid #90BCBA;
+    color: #90BCBA;
+}
