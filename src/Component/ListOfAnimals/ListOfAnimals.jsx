@@ -3,6 +3,7 @@ import style from "./ListOfAnimals.module.css"
 import axios from "axios";
 import Preloader from "../Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import {setDataInProfile} from "../../redux/Reducers/ProfileReducer";
 
 const ListOfAnimals = (props) => {
 
@@ -11,7 +12,8 @@ const ListOfAnimals = (props) => {
     useEffect(() => {
         axios.get('https://aws.random.cat/meow')
             .then(response => {
-                setPhoto(response.data.file)
+                setPhoto(response.data.file);
+                props.setImageUrl(response.data.file)
             })
     }, [])
 
@@ -24,8 +26,8 @@ const ListOfAnimals = (props) => {
                 <p className={style.street}>{props.streetAddress}</p>
                 <p>Маленький щенокбегает без ошейника</p>
                 <div className={style.navInList}>
-                    <NavLink to={'/test1'}>Подробнее</NavLink>
-                    <NavLink to={'/test2'}>Откликнуться</NavLink>
+                    <NavLink to={`/infoPage/${props.firstName}`} onClick={()=>{props.setDataInProfile(props.firstName, props.streetAddress)}}>Подробнее</NavLink>
+                    <NavLink to={'/infoPage'}>Откликнуться</NavLink>
                 </div>
             </div>
         </div>

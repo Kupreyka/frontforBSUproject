@@ -4,31 +4,25 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {authSuccess, setAuthData} from "./redux/Reducers/AuthReducer";
 import Login from "./Component/ RegistrationPage/RegistrationPage";
-import { Redirect, Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import ContainerListOfAnimals from "./Component/ListOfAnimals/ContainerListOfAnimals";
 import SuccessfulRegistration from "./Component/ RegistrationPage/ SuccessfulRegistration/SuccessfulRegistration";
+import InfoPage from "./Component/InfoPage/InfoPage";
+import {setImageUrl, setProfileData} from "./redux/Reducers/ProfileReducer";
 
 
 function App(props) {
 
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        axios.get('/users?count=10')
-            .then(response => {
-                let localData = response.data;
-                setData(localData)
-            })
-    }, [])
-
     return (
         <div className="App">
             {!props.isAuth ?
-                <Route path='/login' render={() => <Login isAuth={props.isAuth} setAuthData={props.setAuthData} authSuccess={props.authSuccess}/>}/> :
+                <Route path='/login' render={() => <Login isAuth={props.isAuth} setAuthData={props.setAuthData}
+                                                          authSuccess={props.authSuccess}/>}/> :
                 <Redirect to={'/success'}/>}
+            <Route path='/infoPage' render={()=> <InfoPage/>}/>
             <Route path='/success' render={() => <SuccessfulRegistration login={props.login}/>}/>
             {props.isAuth ? <Route exact path='/' render={() => <Redirect to={'/home'}/>}/> : <Redirect to={'/login'}/>}
-            <Route path='/home' render={() => <ContainerListOfAnimals data={data}/>}/>
+            <Route path='/home' render={() => <ContainerListOfAnimals setImageUrl={props.setImageUrl} setProfileData={props.setProfileData}  />}/>
         </div>
     );
 }
@@ -38,4 +32,4 @@ let mapStateToProps = (state) => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, {authSuccess,setAuthData})(App);
+export default connect(mapStateToProps, {authSuccess, setAuthData, setImageUrl,setProfileData})(App);

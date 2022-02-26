@@ -1,0 +1,17 @@
+.infoPage{
+    background: #fff;
+    height: 100vh;
+}
+
+.infoPageMain{
+    display: flex;
+    padding: 4em 0em 2em 4em;
+}
+
+.infoPageMain img{
+    width: 400px;
+}
+
+.infoPageSub{
+    padding: 0 0 0 2em;
+}

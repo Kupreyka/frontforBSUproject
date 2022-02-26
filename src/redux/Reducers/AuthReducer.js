@@ -2,7 +2,7 @@ const AUTH_SUCCESS = 'auth/AUTH_SUCCESS'
 const SET_AUTH_DATA = 'auth/SET_AUTH_DATA'
 
 let initialState = {
-    isAuth: false,
+    isAuth: true,
     login: null,
     phone: null,
     email:null
