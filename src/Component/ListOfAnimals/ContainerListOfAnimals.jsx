@@ -20,9 +20,12 @@ const ContainerListOfAnimals = (props) => {
         <>
             {!props.data ? <Preloader/> : props.data.map(p => <ListOfAnimals firstName={p.firstName}
                                                                              streetAddress={p.streetAddress}
+                                                                             email={p.email}
+                                                                             phoneNumber={p.phoneNumber}
                                                                              avatar={p.avatar}
                                                                              setDataInProfile={props.setDataInProfile}
-                                                                             setImageUrl={props.setImageUrl}/>)}
+                                                                             setImageUrl={props.setImageUrl}
+                                                                             userName={p.userName}/>)}
         </>
     )
 }

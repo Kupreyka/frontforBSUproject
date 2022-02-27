@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './App.css';
-import axios from "axios";
 import {connect} from "react-redux";
 import {authSuccess, setAuthData} from "./redux/Reducers/AuthReducer";
 import Login from "./Component/ RegistrationPage/RegistrationPage";
@@ -19,10 +18,11 @@ function App(props) {
                 <Route path='/login' render={() => <Login isAuth={props.isAuth} setAuthData={props.setAuthData}
                                                           authSuccess={props.authSuccess}/>}/> :
                 <Redirect to={'/success'}/>}
-            <Route path='/infoPage' render={()=> <InfoPage/>}/>
-            <Route path='/success' render={() => <SuccessfulRegistration login={props.login}/>}/>
+            <Route path='/infoPage' render={() => <InfoPage/>}/>
+            {props.isAuth && <Route path='/success' render={() => <SuccessfulRegistration  login={props.login}/>}/>}
             {props.isAuth ? <Route exact path='/' render={() => <Redirect to={'/home'}/>}/> : <Redirect to={'/login'}/>}
-            <Route path='/home' render={() => <ContainerListOfAnimals setImageUrl={props.setImageUrl} setProfileData={props.setProfileData}  />}/>
+            <Route path='/home' render={() => <ContainerListOfAnimals setImageUrl={props.setImageUrl}
+                                                                      setProfileData={props.setProfileData}/>}/>
         </div>
     );
 }
@@ -32,4 +32,4 @@ let mapStateToProps = (state) => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, {authSuccess, setAuthData, setImageUrl,setProfileData})(App);
+export default connect(mapStateToProps, {authSuccess, setAuthData, setImageUrl, setProfileData})(App);

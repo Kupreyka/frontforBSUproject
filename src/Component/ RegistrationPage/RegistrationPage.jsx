@@ -15,11 +15,11 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div className={style.field}>
-                <div className={style.nameForInput}>Имя:</div>
-                <Field placeholder={'Имя'} name={'login'} component={'input'} />
+                <div className={style.nameForInput}>Name:</div>
+                <Field placeholder={'name'} name={'login'} component={'input'} />
             </div>
             <div className={style.field}>
-                <div className={style.nameForInput}>Номер телефона:</div>
+                <div className={style.nameForInput}>Number phone:</div>
                 <Field placeholder={'+375(__)___-__-__'} {...phoneMask} name={'phone'} mask={'000000'}
                        component={'input'} type={'tel'}/>
             </div>
@@ -27,12 +27,12 @@ const LoginForm = (props) => {
                 <div className={style.nameForInput}>E-mail</div>
                 <Field placeholder={'yourmail@mail.com'} name={'email'} component={'input'} type={'email'}/>
             </div>
-            <div className={style.field}>
+            {/*<div className={style.field}>
                 <div className={style.nameForInput}>Где была найдена собака?</div>
                 <Field placeholder={'Начните вводить адрес...'} name={'address'} component={'input'} type={'text'}/>
-            </div>
+            </div>*/}
             <div className={style.field + ' ' + style.fieldBtn}>
-                <button>Далее</button>
+                <button>Next</button>
             </div>
         </form>
     )

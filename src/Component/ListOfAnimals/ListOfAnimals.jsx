@@ -3,7 +3,6 @@ import style from "./ListOfAnimals.module.css"
 import axios from "axios";
 import Preloader from "../Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {setDataInProfile} from "../../redux/Reducers/ProfileReducer";
 
 const ListOfAnimals = (props) => {
 
@@ -17,6 +16,10 @@ const ListOfAnimals = (props) => {
             })
     }, [])
 
+    let submitData = () => {
+        props.setDataInProfile(props.firstName, props.streetAddress, props.phoneNumber, props.email, props.userName)
+    }
+
     return (
         <div className={style.profilePreview}>
             {!photo ? <Preloader/> : <img src={photo}/>}
@@ -26,8 +29,8 @@ const ListOfAnimals = (props) => {
                 <p className={style.street}>{props.streetAddress}</p>
                 <p>Маленький щенокбегает без ошейника</p>
                 <div className={style.navInList}>
-                    <NavLink to={`/infoPage/${props.firstName}`} onClick={()=>{props.setDataInProfile(props.firstName, props.streetAddress)}}>Подробнее</NavLink>
-                    <NavLink to={'/infoPage'}>Откликнуться</NavLink>
+                    <NavLink to={`/infoPage/${props.firstName}`} onClick={submitData}>Подробнее</NavLink>
+                    {/*<NavLink to={'/infoPage'}>Откликнуться</NavLink>*/}
                 </div>
             </div>
         </div>
